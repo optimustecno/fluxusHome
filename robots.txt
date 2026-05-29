@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://usefluxus.com.br/sitemap.xml
+Sitemap: https://www.usefluxus.com.br/sitemap.xml

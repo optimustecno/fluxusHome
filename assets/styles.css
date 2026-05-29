@@ -1,15 +1,60 @@
 :root {
-    --bg: #f7f8fb;
-    --bg-soft: #ffffff;
-    --text: #162033;
-    --muted: #657086;
-    --primary: #2563eb;
-    --primary-dark: #1e40af;
-    --secondary: #10b981;
-    --food: #f97316;
-    --border: #e5e7eb;
-    --shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+    color-scheme: light;
+    --bg: #f5f8f5;
+    --bg-soft: #fffdf9;
+    --surface: rgba(255, 255, 255, 0.86);
+    --surface-strong: #ffffff;
+    --text: #12332f;
+    --muted: #657a72;
+    --primary: #0f5d54;
+    --primary-dark: #0a413b;
+    --secondary: #d87955;
+    --food: #e26f3f;
+    --border: #dce7e1;
+    --card-border: rgba(207, 224, 216, 0.9);
+    --feature-text: #284640;
+    --button-text: #ffffff;
+    --check-text: #ffffff;
+    --hero-glow-primary: rgba(15, 93, 84, 0.16);
+    --hero-glow-secondary: rgba(216, 121, 85, 0.14);
+    --brand-shadow: 0 10px 30px rgba(15, 93, 84, 0.18);
+    --shadow: 0 20px 60px rgba(7, 39, 35, 0.10);
+    --institutional-start: rgba(9, 61, 56, 0.96);
+    --institutional-end: rgba(18, 96, 86, 0.92);
+    --institutional-solid: #093d38;
+    --icon-bg-fisio: rgba(15, 93, 84, 0.10);
+    --icon-bg-food: rgba(226, 111, 63, 0.13);
+    --contact-text: #0e302c;
     --radius: 24px;
+}
+
+[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #061d1a;
+    --bg-soft: #0b2925;
+    --surface: rgba(13, 49, 44, 0.84);
+    --surface-strong: #123a35;
+    --text: #edf8f2;
+    --muted: #a8beb6;
+    --primary: #62b6a7;
+    --primary-dark: #8ed0c3;
+    --secondary: #e18b68;
+    --food: #f08a5d;
+    --border: #244943;
+    --card-border: rgba(64, 104, 96, 0.74);
+    --feature-text: #d6e6df;
+    --button-text: #08221f;
+    --check-text: #08221f;
+    --hero-glow-primary: rgba(98, 182, 167, 0.18);
+    --hero-glow-secondary: rgba(225, 139, 104, 0.16);
+    --brand-shadow: 0 10px 32px rgba(0, 0, 0, 0.28);
+    --shadow: 0 22px 70px rgba(0, 0, 0, 0.30);
+    --institutional-start: rgba(8, 34, 31, 0.98);
+    --institutional-end: rgba(14, 66, 59, 0.94);
+    --institutional-solid: #08221f;
+    --icon-bg-fisio: rgba(98, 182, 167, 0.16);
+    --icon-bg-food: rgba(240, 138, 93, 0.16);
+    --contact-text: #08221f;
 }
 
 * {
@@ -26,10 +71,13 @@ body {
     min-height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
     background:
-        radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 32%),
-        radial-gradient(circle at top right, rgba(16, 185, 129, 0.10), transparent 28%),
+        radial-gradient(circle at top left, var(--hero-glow-primary), transparent 32%),
+        radial-gradient(circle at top right, var(--hero-glow-secondary), transparent 28%),
         var(--bg);
     color: var(--text);
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease;
 }
 
 a {
@@ -84,14 +132,18 @@ header {
     width: 44px;
     height: 44px;
     border-radius: 14px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    background: var(--surface-strong);
     display: grid;
     place-items: center;
-    color: white;
-    font-weight: 800;
-    font-size: 20px;
-    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.22);
+    padding: 6px;
+    box-shadow: var(--brand-shadow);
     flex: 0 0 auto;
+}
+
+.brand-mark img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .brand-text strong {
@@ -103,6 +155,12 @@ header {
 .brand-text span {
     color: var(--muted);
     font-size: 13px;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
 }
 
 .nav-links {
@@ -122,6 +180,46 @@ header {
     color: var(--primary);
 }
 
+.theme-toggle {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(7, 39, 35, 0.08);
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus {
+    transform: translateY(-2px);
+    border-color: var(--primary);
+}
+
+.theme-toggle-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 999px;
+    background: var(--primary);
+    box-shadow: inset -6px -6px 0 0 var(--surface-strong);
+    transition:
+        background 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+[data-theme="dark"] .theme-toggle-icon {
+    background: var(--secondary);
+    box-shadow: 0 0 0 5px rgba(225, 139, 104, 0.16);
+    transform: scale(0.82);
+}
+
 .hero {
     padding: 72px 0 44px;
     text-align: center;
@@ -135,7 +233,7 @@ header {
     margin-bottom: 22px;
     border: 1px solid var(--border);
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.75);
+    background: var(--surface);
     color: var(--muted);
     font-size: 14px;
     backdrop-filter: blur(12px);
@@ -146,7 +244,7 @@ header {
     height: 8px;
     border-radius: 999px;
     background: var(--secondary);
-    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.12);
+    box-shadow: 0 0 0 6px rgba(216, 121, 85, 0.14);
 }
 
 .hero h1 {
@@ -196,8 +294,8 @@ header {
     overflow: hidden;
     padding: 34px;
     border-radius: var(--radius);
-    background: rgba(255, 255, 255, 0.86);
-    border: 1px solid rgba(229, 231, 235, 0.9);
+    background: var(--surface);
+    border: 1px solid var(--card-border);
     box-shadow: var(--shadow);
     transition:
         transform 0.25s ease,
@@ -207,8 +305,8 @@ header {
 
 .solution-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 26px 70px rgba(15, 23, 42, 0.12);
-    border-color: rgba(37, 99, 235, 0.32);
+    box-shadow: var(--shadow);
+    border-color: var(--primary);
 }
 
 .solution-card::after {
@@ -236,16 +334,22 @@ header {
     border-radius: 18px;
     display: grid;
     place-items: center;
-    font-size: 28px;
+    padding: 8px;
     margin-bottom: 22px;
 }
 
+.solution-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
 .fisio .solution-icon {
-    background: rgba(37, 99, 235, 0.10);
+    background: var(--icon-bg-fisio);
 }
 
 .food .solution-icon {
-    background: rgba(249, 115, 22, 0.12);
+    background: var(--icon-bg-food);
 }
 
 .solution-card small {
@@ -281,7 +385,7 @@ header {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: #334155;
+    color: var(--feature-text);
     font-size: 15px;
 }
 
@@ -291,7 +395,7 @@ header {
     border-radius: 999px;
     display: grid;
     place-items: center;
-    color: white;
+    color: var(--check-text);
     font-size: 12px;
     flex: 0 0 auto;
 }
@@ -313,7 +417,7 @@ header {
     padding: 0 20px;
     border-radius: 14px;
     border: none;
-    color: white;
+    color: var(--button-text);
     font-weight: 700;
     cursor: pointer;
     transition:
@@ -361,11 +465,11 @@ header {
 }
 
 .content-card {
-    background: rgba(255, 255, 255, 0.78);
+    background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 22px;
     padding: 26px;
-    box-shadow: 0 14px 40px rgba(15, 23, 42, 0.05);
+    box-shadow: 0 14px 40px rgba(7, 39, 35, 0.06);
 }
 
 .content-card h3 {
@@ -385,8 +489,8 @@ header {
     border-radius: 30px;
     padding: 42px;
     background:
-        linear-gradient(135deg, rgba(22, 32, 51, 0.96), rgba(30, 64, 175, 0.92)),
-        #162033;
+        linear-gradient(135deg, var(--institutional-start), var(--institutional-end)),
+        var(--institutional-solid);
     color: white;
     box-shadow: var(--shadow);
     overflow: hidden;
@@ -409,9 +513,21 @@ header {
     max-width: 860px;
 }
 
+.institutional-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
+.institutional-brand img {
+    width: 112px;
+    max-height: 44px;
+    object-fit: contain;
+}
+
 .institutional small {
     display: inline-block;
-    margin-bottom: 12px;
     color: rgba(255, 255, 255, 0.68);
     text-transform: uppercase;
     font-size: 12px;
@@ -445,8 +561,8 @@ header {
     min-height: 46px;
     padding: 0 18px;
     border-radius: 14px;
-    background: white;
-    color: #162033;
+    background: #ffffff;
+    color: var(--contact-text);
     font-weight: 700;
     transition:
         transform 0.2s ease,
@@ -515,7 +631,9 @@ footer {
 
     .solution-card,
     .button,
-    .contact-button {
+    .contact-button,
+    .theme-toggle,
+    .theme-toggle-icon {
         transition: none;
     }
 }
@@ -528,11 +646,15 @@ footer {
 
 @media (max-width: 760px) {
     .navbar {
-        align-items: flex-start;
+        align-items: center;
     }
 
     .nav-links {
         display: none;
+    }
+
+    .nav-actions {
+        gap: 0;
     }
 
     .hero {
