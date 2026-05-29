@@ -521,8 +521,8 @@ header {
 }
 
 .institutional-brand img {
-    width: 112px;
-    max-height: 44px;
+    width: 382px;
+    max-height: 200px;
     object-fit: contain;
 }
 
@@ -533,6 +533,7 @@ header {
     font-size: 12px;
     letter-spacing: 0.12em;
     font-weight: 700;
+    padding-bottom: 8px;
 }
 
 .institutional h2 {
