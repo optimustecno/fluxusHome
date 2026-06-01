@@ -1233,6 +1233,8 @@
             payload.segmento = payload.segmento ? String(payload.segmento).trim() : "";
             payload.interesse = payload.interesse ? String(payload.interesse).trim() : "";
             payload.mensagem = payload.mensagem ? String(payload.mensagem).trim() : "";
+            payload.restaurante = payload.empresa;
+            payload.fone = payload.telefone;
 
             submitButton.disabled = true;
             submitButton.innerHTML = "Enviando...";
