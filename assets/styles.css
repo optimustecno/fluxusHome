@@ -138,12 +138,14 @@ header {
     padding: 6px;
     box-shadow: var(--brand-shadow);
     flex: 0 0 auto;
+    overflow: hidden;
 }
 
 .brand-mark img {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    border-radius: 10px;
 }
 
 .brand-text strong {
@@ -336,12 +338,14 @@ header {
     place-items: center;
     padding: 8px;
     margin-bottom: 22px;
+    overflow: hidden;
 }
 
 .solution-icon img {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    border-radius: 12px;
 }
 
 .fisio .solution-icon {
