@@ -78,6 +78,10 @@ button:focus-visible {
     color: #102c28;
 }
 
+.garcom-hero .store-icon {
+    flex-shrink: 0;
+}
+
 .garcom-hero .food-button:focus-visible {
     outline-color: var(--primary-dark);
 }
